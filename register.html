@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registered user </title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0s ease;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #f74f08;
+        }
+
+        a {
+            text-decoration: none;
+            color: #2196F3;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: brown;
+        }
+
+        .success-message {
+            color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Register User</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <table align="center">
+            <tr>
+                <td><label for="input1">Enter Username</label></td>
+                <td><input type="email" name="uname" id="input1" placeholder="Enter Name"></td>
+            </tr>
+            <tr>
+                <td><label for="input2">Enter Password</label></td>
+                <td><input type="password" name="upass" id="input2"></td>
+            </tr>
+            <tr>
+                <td><label for="input3">Confirm Password</label></td>
+                <td><input type="password" name="ucpass" id="input3"></td>
+            </tr>
+            <tr>
+                <td><label for="input4">Enter Email</label></td>
+                <td><input type="email" name="uemail" id="input4"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Register"></td>
+
+            </tr>
+            <tr>
+                <td><a href="/login">Already User? Login</a></td>
+            </tr>
+
+            {% if errmsg %}
+                <tr>
+                    <td class="error-message">{{errmsg}}</td>
+                </tr>
+            {% endif %}
+
+            {% if success %}
+                <tr>
+                    <td class="success-message">{{success}}</td>
+                    <br>
+                    <td><a href="/login">login</a></td>
+                </tr>
+            {% endif %}
+        </table>
+    </form>
+</body>
+
+</html>
